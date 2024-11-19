@@ -1,6 +1,6 @@
 .idea
 target
-vertx-mongo-effect-recording.jfr
+vertx-mongodb-effect.iml
 deploy.sh
 settings.xml
 .DS_Store
