@@ -1,0 +1,6 @@
+.idea
+target
+vertx-mongo-effect-recording.jfr
+deploy.sh
+settings.xml
+.DS_Store
