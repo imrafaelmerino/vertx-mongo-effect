@@ -254,8 +254,9 @@ import io.vertx.core.ThreadingModel;
 public class ReadModule extends MongoModule {
 
     public MyCollectionModule(final Supplier<MongoCollection<JsObj>> collection) {
-        super(new DeploymentOptions().setThreadingModel(ThreadingModel.VIRTUAL_THREAD),
-              collection);
+        super(collection,
+              new DeploymentOptions().setThreadingModel(ThreadingModel.VIRTUAL_THREAD)
+             );
     }
 
     public static Lambdac<FindMessage, Optional<JsObj>> findOne;

@@ -2,17 +2,19 @@
 #remove containers if necessary
 docker rm $(docker ps -qa)
 
+PROJECT_HOME="/Users/rmerino/Projects/vertx-mongodb-effect/src/test/rs"
+
 docker run -d -p 27017:27017 \
--v /Users/rmerino/Projects/vertx-mongo-effect/src/test/rs/conf.yml:/etc/conf.yml \
+-v ${PROJECT_HOME}/conf.yml:/etc/conf.yml \
 --name mongo1 mongo --config "/etc/conf.yml"
 
 docker run -d -p 27018:27017 \
--v /Users/rmerino/Projects/vertx-mongo-effect/src/test/rs/conf.yml:/etc/conf.yml \
+-v ${PROJECT_HOME}/conf.yml:/etc/conf.yml \
 --name mongo2 mongo --config "/etc/conf.yml"
 
 docker run -d -p 27019:27017 \
--v /Users/rmerino/Projects/vertx-mongo-effect/src/test/rs/conf.yml:/etc/conf.yml \
---name mongo3 mongo --config "/etc/conf.yml"
+-v ${PROJECT_HOME}/conf.yml:/etc/conf.yml \
+--name mongo3 mongo --config "/etc/conf.yml" 
 
 
 docker exec -it mongo1 mongosh

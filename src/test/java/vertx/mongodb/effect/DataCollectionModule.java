@@ -2,6 +2,7 @@ package vertx.mongodb.effect;
 
 import com.mongodb.client.MongoCollection;
 import io.vertx.core.DeploymentOptions;
+import io.vertx.core.ThreadingModel;
 import jsonvalues.JsArray;
 import jsonvalues.JsObj;
 import vertx.effect.Lambdac;
@@ -37,7 +38,8 @@ public final class DataCollectionModule extends MongoModule {
     public Lambdac<UpdateMessage, JsObj> findOneAndUpdate;
 
     public DataCollectionModule(final Supplier<MongoCollection<JsObj>> collection) {
-        super(collection);
+        super(collection,
+              new DeploymentOptions().setThreadingModel(ThreadingModel.WORKER));
     }
 
 
