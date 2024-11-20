@@ -248,11 +248,14 @@ We create a module where all the lambdas make read operations and spawn verticle
 ```code
 import vertx.mongodb.effect.MongoModule;
 import vertx.effect.Lambdac;
+import io.vertx.core.DeploymentOptions;
+import io.vertx.core.ThreadingModel;
 
 public class ReadModule extends MongoModule {
 
     public MyCollectionModule(final Supplier<MongoCollection<JsObj>> collection) {
-        super(collection);
+        super(new DeploymentOptions().setThreadingModel(ThreadingModel.VIRTUAL_THREAD),
+              collection);
     }
 
     public static Lambdac<FindMessage, Optional<JsObj>> findOne;
@@ -266,8 +269,8 @@ public class ReadModule extends MongoModule {
     @Override
     protected void initialize() {
         Lambdac<FindMessage, JsObj> findOneLambda = vertxRef.spawn("find_one",
-                                                             new FindOne(collection)
-                                                            );
+                                                                   new FindOne(collection)
+                                                                  );
         this.findOne = (context,message) -> findOneLambda.apply(context,message)
                                                          .map(Optional::ofNullable);
         this.findAll = vertxRef.spawn("find_all",
@@ -453,12 +456,27 @@ Fields of a verticle message event:
 
 ## <a name="installation"><a/> Installation 
 
+For Java 17 or higher:
+
+
 ```xml
 
 <dependency>
    <groupId>com.github.imrafaelmerino</groupId>
    <artifactId>vertx-mongodb-effect</artifactId>
    <version>2.0.0</version>
+</dependency>
+
+```
+
+For Java 21 or higher:
+
+```xml
+
+<dependency>
+  <groupId>com.github.imrafaelmerino</groupId>
+  <artifactId>vertx-mongodb-effect</artifactId>
+  <version>3.0.0</version>
 </dependency>
 
 ```
