@@ -11,7 +11,7 @@
 - [Installation](#installation)
 - [Running Integration Test](#rit)
 
-[![Maven](https://img.shields.io/maven-central/v/com.github.imrafaelmerino/vertx-mongodb-effect/2.0.0)](https://search.maven.org/artifact/com.github.imrafaelmerino/vertx-mongodb-effect/2.0.0/jar)
+[![Maven](https://img.shields.io/maven-central/v/com.github.imrafaelmerino/vertx-mongodb-effect/3.0.0)](https://search.maven.org/artifact/com.github.imrafaelmerino/vertx-mongodb-effect/3.0.0/jar)
 
 
 ## <a name="introduction"><a/> Introduction
