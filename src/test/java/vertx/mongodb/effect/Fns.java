@@ -6,7 +6,7 @@ import io.vertx.junit5.VertxTestContext;
 
 import java.util.function.Consumer;
 
-public class TestFns {
+public class Fns {
 
 
     public static <T> Handler<AsyncResult<T>> pipeTo(final Consumer<T> successConsumer,

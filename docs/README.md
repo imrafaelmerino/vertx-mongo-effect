@@ -9,6 +9,7 @@
 - [Java Flight Recorder support](#jfr)
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Running Integration Test](#rit)
 
 [![Maven](https://img.shields.io/maven-central/v/com.github.imrafaelmerino/vertx-mongodb-effect/2.0.0)](https://search.maven.org/artifact/com.github.imrafaelmerino/vertx-mongodb-effect/2.0.0/jar)
 
@@ -482,6 +483,61 @@ For Java 21 or higher:
 
 ```
 
+## <a name="rit"><a/> Running Integration Tests
+
+Before executing the integration tests, ensure that a Mongo replica set is up and running.
+
+```shell
+
+#Edit this path to your particular case
+PROJECT_HOME="/Users/rmerino/Projects/vertx-mongodb-effect"
+
+CONFIGURATION_FILE_PATH="${PROJECT_HOME}/src/test/resources/conf.yml"
+
+if [ ! -f "$CONFIGURATION_FILE_PATH" ]; then
+    echo "The configuration file ${CONFIGURATION_FILE_PATH} does not exist."
+fi
+
+docker run -d -p 27017:27017 \
+-v ${CONFIGURATION_FILE_PATH}:/etc/conf.yml \
+--name mongo1 mongo --config "/etc/conf.yml"
+
+docker run -d -p 27018:27017 \
+-v ${CONFIGURATION_FILE_PATH}:/etc/conf.yml \
+--name mongo2 mongo --config "/etc/conf.yml"
+
+docker run -d -p 27019:27017 \
+-v ${CONFIGURATION_FILE_PATH}:/etc/conf.yml \
+--name mongo3 mongo --config "/etc/conf.yml" 
+
+
+#let's configure the replica opening the Mongo console
+docker exec -it mongo1 mongosh
+```
+
+and execute the following command, where 192.168.1.64 is my IP (don't use localhost):
+
+```javascript
+rs.initiate(
+       {
+         _id: "rs0",
+         members: [
+           { _id: 0, host: "192.168.1.64:27017" },
+           { _id: 1, host: "192.168.1.64:27018" },
+           { _id: 2, host: "192.168.1.64:27019" }
+         ]
+       }
+     )
+```
+
+Once the Mongo replica set is up and running, you're ready to run the integration tests.
+
+To run the tests, use one of the following Maven commands:
+
+- `mvn failsafe:integration-test` — To run integration tests only.
+- `mvn verify` — To run both unit and integration tests.
+
+---
 
 
 

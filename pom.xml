@@ -51,6 +51,7 @@
     <SLF4J-API.VERSION>1.7.30</SLF4J-API.VERSION>
     <MONGO-VALUES-VERSION>2.0.0</MONGO-VALUES-VERSION>
 
+    <MAVEN-FAILSAFE-PLUGIN.VERSION>3.1.2</MAVEN-FAILSAFE-PLUGIN.VERSION>
   </properties>
 
   <build>
@@ -96,6 +97,20 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${MAVEN-SUREFIRE-PLUGIN.VERSION}</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>${MAVEN-FAILSAFE-PLUGIN.VERSION}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>

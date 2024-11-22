@@ -48,7 +48,7 @@ import vertx.mongodb.effect.codecs.RegisterMongoEffectCodecs;
 import vertx.values.codecs.RegisterJsValuesCodecs;
 
 @ExtendWith(VertxExtension.class)
-public class MongoOpsTest {
+public class MongoOperationsIT {
 
   public static Random random = new Random();
 
@@ -84,7 +84,7 @@ public class MongoOpsTest {
                              vertxRef.deployVerticle(new RegisterMongoEffectCodecs()),
                              vertxRef.deployVerticle(dataModule)
                             )
-                        .onComplete(TestFns.pipeTo(testContext))
+                        .onComplete(Fns.pipeTo(testContext))
                         .get();
 
 
@@ -161,11 +161,11 @@ public class MongoOpsTest {
         .apply(obj)
         .then(id -> dataModule.findOne.apply(FindMessage.ofFilter(str2Oid.apply(id))))
         .onComplete(
-            TestFns.pipeTo(result -> assertEquals(Optional.of(obj),
-                                                  result.map(it -> it.delete("_id"))
-                                                 ),
-                           context
-                          )
+            Fns.pipeTo(result -> assertEquals(Optional.of(obj),
+                                              result.map(it -> it.delete("_id"))
+                                             ),
+                       context
+                      )
                    )
         .get();
 
@@ -324,13 +324,13 @@ public class MongoOpsTest {
              )
         .then(r -> dataModule.findOne.apply(FindMessage.ofFilter(filter)))
         .onComplete(
-            TestFns.pipeTo(result -> {
+            Fns.pipeTo(result -> {
                              assertEquals(Optional.of(newObj),
                                           result.map(it -> it.delete("_id"))
                                          );
                            },
-                           context
-                          )
+                       context
+                      )
                    )
         .get();
   }
@@ -530,13 +530,13 @@ public class MongoOpsTest {
              )
         .then(r -> dataModule.findOne.apply(FindMessage.ofFilter(filter)))
         .onComplete(
-            TestFns.pipeTo(result -> {
+            Fns.pipeTo(result -> {
                              assertEquals(Optional.of(newObj),
                                           result.map(it -> it.delete("_id"))
                                          );
                            },
-                           context
-                          )
+                       context
+                      )
                    )
         .get();
   }

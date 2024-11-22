@@ -23,7 +23,7 @@ import static vertx.mongodb.effect.MongoFailures.MONGO_CONNECT_TIMEOUT_CODE;
 import static vertx.mongodb.effect.MongoFailures.MONGO_READ_TIMEOUT_CODE;
 
 @ExtendWith(VertxExtension.class)
-public class TestErrors {
+public class ErrorsTests {
 
 
     private static FindOne findOne;

@@ -9,15 +9,13 @@ import org.junit.jupiter.api.Test;
 import vertx.mongodb.effect.FindMessage;
 import vertx.mongodb.effect.FindMessageBuilder;
 import vertx.mongodb.effect.UpdateMessage;
-import vertx.mongodb.effect.codecs.FindMessageCodec;
-import vertx.mongodb.effect.codecs.UpdateMessageCodec;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 import static jsonvalues.JsBool.TRUE;
 
-public class TestCodecs {
+public class CodecsTests {
 
 
     @Test
