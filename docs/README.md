@@ -2,6 +2,8 @@
 
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%E2%98%95%20Support-yellow)](https://www.buymeacoffee.com/imrafaelmerino)
 
+[![Maven](https://img.shields.io/maven-central/v/com.github.imrafaelmerino/vertx-mongodb-effect/3.0.0)](https://search.maven.org/artifact/com.github.imrafaelmerino/vertx-mongodb-effect/3.0.0/jar)
+
 - [Introduction](#introduction)
 - [Supported types](#types)
 - [Supported operations](#operations)
@@ -13,7 +15,6 @@
 - [Installation](#installation)
 - [Running Integration Test](#rit)
 
-[![Maven](https://img.shields.io/maven-central/v/com.github.imrafaelmerino/vertx-mongodb-effect/3.0.0)](https://search.maven.org/artifact/com.github.imrafaelmerino/vertx-mongodb-effect/3.0.0/jar)
 
 
 ## <a name="introduction"><a/> Introduction
