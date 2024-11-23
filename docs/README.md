@@ -1,5 +1,7 @@
 <img src="./logo/package_twitter_swe2n4mg/black/full/coverphoto/black_logo_white_background.png" alt="vertx-mongodb-effect"/>
 
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%E2%98%95%20Support-yellow)](https://www.buymeacoffee.com/imrafaelmerino)
+
 - [Introduction](#introduction)
 - [Supported types](#types)
 - [Supported operations](#operations)
